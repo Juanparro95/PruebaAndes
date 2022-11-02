@@ -30,7 +30,7 @@ class BlogController extends BaseController
     public function get_data(Request $request)
     {
         $search = $request->search;
-        $blogs = Blog::where('name', 'LIKE', '%' . $search . '%')->paginate(8);
+        $blogs = Blog::where('name', 'LIKE', '%' . $search . '%')->get();
         return response()->json([
             'html' => view('cards', compact('blogs'))->render(),
         ]);
